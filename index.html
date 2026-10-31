@@ -121,7 +121,9 @@ code{font:inherit;font-weight:600}
 .credit p+p{margin-top:8px}
 
 /* ---------- one law ---------- */
-.bar{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;padding-bottom:16px;margin-bottom:24px;border-bottom:1px solid var(--border)}
+/* the law's own bar (back, number and name, previous and next) stays at the top of the panel while the text scrolls under it;
+   it rests exactly where it did, and its paper reaches the panel's sides so nothing shows through beside it */
+.bar{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;padding:32px 0 16px;margin:-32px 0 24px;border-bottom:1px solid var(--border);position:sticky;top:-32px;z-index:3;background:var(--surface);box-shadow:0 0 0 40px var(--surface);clip-path:inset(0 -40px 0 -40px)}
 .bar .back{font:var(--t-caption);color:var(--slate)}
 .bar .back:hover{color:var(--ink)}
 .crumb{display:flex;align-items:baseline;gap:8px;min-width:0}
@@ -171,6 +173,7 @@ code{font:inherit;font-weight:600}
   :root{--dock:100%}
   .dock{top:auto;height:56%;width:100%}
   .panel{border-right:0;border-top:1px solid var(--border);padding:24px 20px 40px}
+  .bar{padding-top:24px;margin-top:-24px;top:-24px}
   .vf{left:16px;bottom:calc(56% + 12px)}
   .scenebar{right:12px;bottom:calc(56% + 8px)}
   .groups{display:none}
