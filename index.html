@@ -110,10 +110,10 @@ code{font:inherit;font-weight:600}
 .ctl label{display:block;font:600 15px/1.25 var(--sans);color:var(--ink)}
 .ctl .range{margin-top:2px}
 .ctl .range input{display:block;height:24px}
-.ctl .ends{margin-top:-4px}
-.ctl .out{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:0 12px;margin-top:14px}
+.ctl .ends{margin-top:2px}
+.ctl .out{display:flex;flex-wrap:wrap;align-items:flex-start;justify-content:space-between;gap:0 12px;margin-top:18px}
 .ctl .readout{margin:0;font:600 14px/1.35 var(--sans)}
-.ctl .txtbtn{min-height:44px}
+.ctl .txtbtn{min-height:44px;margin:-12px 0 -6px}
 
 /* ---------- caption, kind of model and play control, on the drawing ---------- */
 .vf{display:none;position:absolute;left:calc(var(--dock) + 24px);top:76px;pointer-events:none;font:var(--t-caption);color:var(--slate);gap:8px;flex-wrap:wrap;z-index:1}
@@ -337,7 +337,7 @@ code{font:inherit;font-weight:600}
     <a class="mark" href="#" id="home"><span class="mark-m" aria-hidden="true">/M</span><span class="mark-word">MOTH: LAWWORKS</span></a>
     <div class="hlaw" id="hlaw"></div>
     <nav class="groups" id="groups" aria-label="Grupper"></nav>
-    <span class="ver" id="ver"><span class="ver-long">Version 9</span><span class="ver-short" aria-hidden="true">v9</span></span>
+    <span class="ver" id="ver"><span class="ver-long">Version 9.1</span><span class="ver-short" aria-hidden="true">v9.1</span></span>
     <div class="lang" id="lang" role="group" aria-label="Sprog"><button type="button" data-l="da" lang="da">DA</button><button type="button" data-l="en" lang="en">EN</button></div>
   </header>
   <aside class="dock"><div class="panel" id="panel"><div class="title"><h1>MOTH: LAWWORKS</h1><p class="lede">Indlæser … / Loading …</p></div></div></aside>
@@ -5961,7 +5961,8 @@ function minH(){var v=getComputedStyle(app).getPropertyValue('--mmin');var d=doc
 /* ---------- layout: the camera keeps the model clear of the panel and the handle ---------- */
 function layout(){
   var c=$('ctl'),ch=c&&!c.hidden?c.offsetHeight:0;
-  app.style.setProperty('--ctlh',ch+'px');
+  /* on a wide screen the kind of model stands above the handle, with a clear gap: they are two things */
+  app.style.setProperty('--ctlh',(ch?ch+32:0)+'px');
   if(!has3d)return;
   if(narrow()){
     if(cur>=0&&$('mview')&&$('gl').parentNode===$('mview')){
