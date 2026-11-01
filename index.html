@@ -337,7 +337,8 @@ code{font:inherit;font-weight:600}
 /* a phone on its side: a narrower column, so the model keeps room */
 @media (max-width:899px) and (min-width:600px) and (max-height:520px){
   :root{--dock:min(46vw,400px)}
-  .panel{padding:20px 20px 40px}
+  .panel,.app[data-view="law"] .panel{padding:20px 20px 40px}
+  /* the sticky bar's offset must match the panel's top padding, or text shows above it */
   .bar{padding-top:20px;margin-top:-20px;top:-20px}
   .vf{display:none}
   .tag span{display:none}
@@ -358,7 +359,7 @@ code{font:inherit;font-weight:600}
     <a class="mark" href="#" id="home"><span class="mark-m" aria-hidden="true">/M</span><span class="mark-word">MOTH: LAWWORKS</span></a>
     <div class="hlaw" id="hlaw"></div>
     <nav class="groups" id="groups" aria-label="Grupper"></nav>
-    <span class="ver" id="ver"><span class="ver-long">Version 9.3</span><span class="ver-short" aria-hidden="true">v9.3</span></span>
+    <span class="ver" id="ver"><span class="ver-long">Version 9.4</span><span class="ver-short" aria-hidden="true">v9.4</span></span>
     <div class="lang" id="lang" role="group" aria-label="Sprog"><button type="button" data-l="da" lang="da">DA</button><button type="button" data-l="en" lang="en">EN</button></div>
   </header>
   <aside class="dock"><div class="panel" id="panel"><div class="title"><h1>MOTH: LAWWORKS</h1><p class="lede">Indlæser … / Loading …</p></div></div></aside>
