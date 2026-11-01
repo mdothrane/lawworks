@@ -62,6 +62,8 @@ code{font:inherit;font-weight:600}
 .gnode{height:32px;display:grid;place-items:center;padding:0 10px;border:1px solid var(--border-strong);font:var(--t-tag);color:var(--slate);background:var(--surface);white-space:nowrap}
 .gnode:hover{color:var(--ink);border-color:var(--ink)}
 .gnode.is-here{background:var(--midnight);color:var(--white);border-color:var(--midnight)}
+.ver{flex:none;font:var(--t-tag);color:var(--slate);white-space:nowrap}
+.ver-short{display:none}
 .lang{display:flex;align-items:stretch;flex:none;height:32px;border:1px solid var(--border-strong);border-radius:8px;overflow:hidden;font:var(--t-tag)}
 .lang button{display:grid;place-items:center;padding:0 8px;font:var(--t-tag);font-weight:600;color:var(--slate);background:var(--surface)}
 .lang button.on{background:var(--midnight);color:var(--white)}
@@ -236,10 +238,14 @@ code{font:inherit;font-weight:600}
   .vf{display:none}
   .no3d .still{left:0;width:100%;bottom:56%;height:auto}
   .groups{display:none}
-  .lang{margin-left:auto}
+  .ver{margin-left:auto}
   .mark-word{font-size:14px}
 }
 @media (max-width:480px){
+  .ver-long{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+  .ver-short{display:inline}
+  .top{gap:8px}
+  .mark{padding-right:8px}
   .card{padding:12px 12px 16px}
   .steps button{padding:6px 1px;font-size:11px}
 }
@@ -253,6 +259,7 @@ code{font:inherit;font-weight:600}
   <header class="top">
     <a class="mark" href="#" id="home"><span class="mark-m" aria-hidden="true">/M</span><span class="mark-word">MOTH: LAWWORKS</span></a>
     <nav class="groups" id="groups" aria-label="Grupper"></nav>
+    <span class="ver" id="ver"><span class="ver-long">Version 7</span><span class="ver-short" aria-hidden="true">v7</span></span>
     <div class="lang" id="lang" role="group" aria-label="Sprog"><button type="button" data-l="da" lang="da">DA</button><button type="button" data-l="en" lang="en">EN</button></div>
   </header>
   <aside class="dock"><div class="panel" id="panel"></div></aside>
