@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="da"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="version" content="9.5">
 <title>MOTH: LAWWORKS</title>
 <meta name="description" content="De 30 love fra Laws of UX, bygget som små modeller, du kan gætte på, se arbejde og selv prøve. Dansk og engelsk.">
 <meta property="og:title" content="MOTH: LAWWORKS">
@@ -80,14 +81,11 @@ code{font:inherit;font-weight:600}
 .hlaw .pn{flex:none;gap:4px}
 .hlaw .pn a{height:44px;min-width:44px;justify-content:center;padding:0 8px}
 .app[data-view="law"] .hlaw{display:flex}
-.app[data-view="law"] .ver{display:none}
 .app[data-view="law"] .mark-word{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .gnode{height:32px;display:grid;place-items:center;padding:0 10px;border:1px solid var(--border-strong);font:var(--t-tag);color:var(--slate);background:var(--surface);white-space:nowrap}
 .gnode:hover{color:var(--ink);border-color:var(--ink)}
 .gnode.is-here{background:var(--midnight);color:var(--white);border-color:var(--midnight)}
-.ver{flex:none;margin-left:auto;font:var(--t-tag);color:var(--slate);white-space:nowrap}
-.ver-short{display:none}
-.lang{display:flex;align-items:stretch;flex:none;height:44px;border:1px solid var(--border-strong);border-radius:8px;overflow:hidden;font:var(--t-tag)}
+.lang{display:flex;margin-left:auto;align-items:stretch;flex:none;height:44px;border:1px solid var(--border-strong);border-radius:8px;overflow:hidden;font:var(--t-tag)}
 .lang button{display:grid;place-items:center;padding:0 10px;font:var(--t-tag);font-weight:600;color:var(--slate);background:var(--surface)}
 .lang button.on{background:var(--midnight);color:var(--white)}
 .lang button:not(.on):hover{color:var(--ink)}
@@ -290,8 +288,6 @@ code{font:inherit;font-weight:600}
 
 /* ---------- very narrow ---------- */
 @media (max-width:400px){
-  .ver-long{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-  .ver-short{display:inline}
   .top{gap:8px}
   .panel{padding-left:16px;padding-right:16px}
   .card{padding:14px 12px}
@@ -317,7 +313,6 @@ code{font:inherit;font-weight:600}
   .mstage{display:none}
   .app[data-view="law"] .hlaw{display:none}
   .app[data-view="law"] .mark-word{position:static;width:auto;height:auto;overflow:visible;clip:auto}
-  .app[data-view="law"] .ver{display:inline}
   .app>.scenebar,.app[data-view="map"]>.scenebar{display:flex;top:72px;bottom:auto;right:20px}
   .play,.back3d{height:32px}
   .app>.tag{display:grid;left:calc(var(--dock) + 24px);top:auto;bottom:calc(16px + var(--ctlh,0px));max-width:280px;padding:8px 12px}
@@ -346,7 +341,7 @@ code{font:inherit;font-weight:600}
 /* the group buttons in the top bar need the room of a wide screen */
 @media (min-width:900px){
   .groups{display:flex;margin-left:auto}
-  .ver{margin-left:0}
+  .lang{margin-left:0}
 }
 @media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}.mstage,.mview .scenebar{transition:none}}
 </style>
@@ -359,7 +354,6 @@ code{font:inherit;font-weight:600}
     <a class="mark" href="#" id="home"><span class="mark-m" aria-hidden="true">/M</span><span class="mark-word">MOTH: LAWWORKS</span></a>
     <div class="hlaw" id="hlaw"></div>
     <nav class="groups" id="groups" aria-label="Grupper"></nav>
-    <span class="ver" id="ver"><span class="ver-long">Version 9.4</span><span class="ver-short" aria-hidden="true">v9.4</span></span>
     <div class="lang" id="lang" role="group" aria-label="Sprog"><button type="button" data-l="da" lang="da">DA</button><button type="button" data-l="en" lang="en">EN</button></div>
   </header>
   <aside class="dock"><div class="panel" id="panel"><div class="title"><h1>MOTH: LAWWORKS</h1><p class="lede">Indlæser … / Loading …</p></div></div></aside>
@@ -5843,7 +5837,7 @@ function renderMap(){
     h+='<div class="gh" id="g-'+gi+'"><b>'+t(g)+'</b><span>'+g.range+'</span></div>';
     LAWS.forEach(function(l,i){if(l.g===gi)h+=item(l,i);});
   });
-  h+='</div><div class="credit">'+u('credit')+'<p class="vfoot">'+esc(document.querySelector('#ver .ver-long').textContent)+'</p></div>';
+  h+='</div><div class="credit">'+u('credit')+'<p class="vfoot">'+'Version '+esc(document.querySelector('meta[name="version"]').content)+'</p></div>';
   park();panel.innerHTML=h;panel.scrollTop=0;hoverList();
 }
 
